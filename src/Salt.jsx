@@ -1,9 +1,11 @@
 import CryptoJS from "crypto-js";
 
+const llave = import.meta.env.VITE_APP_KEY;
+
 const cifrar = (texto) => {
   const textoCifrado = CryptoJS.AES.encrypt(
     texto,
-    "12345678"
+    llave
   ).toString();
 
   return textoCifrado;
@@ -12,7 +14,7 @@ const cifrar = (texto) => {
 const descifrar = (texto) => {
   const bytes = CryptoJS.AES.decrypt(
     texto,
-    "12345678"
+    llave
   );
 
   const textoDescifrado = bytes.toString(
